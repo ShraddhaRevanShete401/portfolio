@@ -1,0 +1,10 @@
+{
+  "description": "Create a stunning online portfolio to showcase your work and skills, making it easy for potential clients and employers to discover your talent.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
