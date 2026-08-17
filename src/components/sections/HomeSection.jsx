@@ -1,24 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react'
-import { motion, useInView } from 'framer-motion'
+import React from 'react'
+import { motion } from 'framer-motion'
 import officialPhoto from '@/imports/Official_Photo.jpeg'
 import resumeImage from '../../../Resume.jpeg'
 
-function useCountUp(target: number, duration = 1800, active = false) {
-  const [count, setCount] = useState(0)
-  useEffect(() => {
-    if (!active) return
-    const start = Date.now()
-    const timer = setInterval(() => {
-      const t = Math.min((Date.now() - start) / duration, 1)
-      setCount(Math.round(target * (1 - Math.pow(1 - t, 3))))
-      if (t >= 1) clearInterval(timer)
-    }, 16)
-    return () => clearInterval(timer)
-  }, [target, duration, active])
-  return count
-}
-
-function FadeUp({ children, delay = 0, className = '' }: { children: React.ReactNode; delay?: number; className?: string }) {
+function FadeUp({ children, delay = 0, className = '' }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 24 }}
@@ -28,20 +13,6 @@ function FadeUp({ children, delay = 0, className = '' }: { children: React.React
     >
       {children}
     </motion.div>
-  )
-}
-
-function MetricItem({ value, suffix = '', label, active }: { value: number; suffix?: string; label: string; active: boolean }) {
-  const count = useCountUp(value, 1800, active)
-  return (
-    <div className="text-center min-w-0">
-      <div className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight tabular-nums break-all">
-        <span className="bg-gradient-to-br from-[#F59E0B] via-[#EC4899] to-[#A855F7] bg-clip-text text-transparent">
-          {count.toLocaleString()}{suffix}
-        </span>
-      </div>
-      <div className="mt-2 text-sm text-[#737373] dark:text-[#A3A3A3] font-medium break-words">{label}</div>
-    </div>
   )
 }
 
@@ -90,15 +61,11 @@ function PhotoCard() {
 }
 
 export default function HomeSection() {
-  const metricsRef = useRef(null)
-  const metricsInView = useInView(metricsRef, { once: true, margin: '-80px' })
-
   return (
     <>
-      {/* HERO */}
       <section
         id="home"
-        className="relative pt-24 pb-20 px-6 lg:px-8 overflow-hidden"
+        className="relative pt-24 pb-16 px-6 lg:px-8 overflow-hidden"
         style={{
           background: 'radial-gradient(ellipse 80% 60% at 60% 0%, rgba(37,99,235,0.07) 0%, transparent 70%), radial-gradient(ellipse 60% 40% at 0% 100%, rgba(124,58,237,0.05) 0%, transparent 70%)',
         }}
@@ -111,9 +78,8 @@ export default function HomeSection() {
           }}
         />
         <div className="relative max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-[1fr_400px] gap-12 lg:gap-16 items-center min-h-[80vh]">
+          <div className="grid lg:grid-cols-[1fr_400px] gap-12 lg:gap-16 items-center">
 
-            {/* Left — text */}
             <div className="flex flex-col gap-6 max-w-2xl w-full min-w-0">
               <FadeUp delay={0}>
                 <div className="inline-flex items-center gap-3 px-3 sm:px-4 md:px-5 py-2.5 md:py-3 rounded-full bg-[#1F2937]/90 dark:bg-[#141414]/95 border border-white/10 dark:border-white/5 shadow-[0_8px_30px_rgba(20,20,20,0.25)] backdrop-blur w-full sm:w-fit max-w-full overflow-hidden">
@@ -198,7 +164,6 @@ export default function HomeSection() {
               </FadeUp>
             </div>
 
-            {/* Right — photo */}
             <motion.div
               initial={{ opacity: 0, x: 40, scale: 0.96 }}
               animate={{ opacity: 1, x: 0, scale: 1 }}
@@ -211,48 +176,13 @@ export default function HomeSection() {
         </div>
       </section>
 
-      {/* METRICS */}
-      <section
-        ref={metricsRef}
-        className="py-20 px-6 lg:px-8"
-        style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 100%, rgba(124,58,237,0.05) 0%, transparent 70%)' }}
-      >
-        <div className="max-w-5xl mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
-            {metricsInView && (
-              <>
-                <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0 }}>
-                  <MetricItem value={1200} suffix="+" label="Campaigns analyzed" active={metricsInView} />
-                </motion.div>
-                <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="text-center min-w-0">
-                  <div className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight break-all">
-                    <span className="bg-gradient-to-br from-[#EF4444] via-[#D946EF] to-[#6366F1] bg-clip-text text-transparent">$371.2M</span>
-                  </div>
-                  <div className="mt-2 text-sm text-[#737373] dark:text-[#A3A3A3] font-medium break-words">YTD sales analyzed</div>
-                </motion.div>
-                <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
-                  <MetricItem value={280} suffix="+" label="Students engaged" active={metricsInView} />
-                </motion.div>
-                <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }} className="text-center min-w-0">
-                  <div className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight break-all">
-                    <span className="bg-gradient-to-br from-[#FACC15] via-[#F472B6] to-[#10B981] bg-clip-text text-transparent">95%</span>
-                  </div>
-                  <div className="mt-2 text-sm text-[#737373] dark:text-[#A3A3A3] font-medium break-words">Positive feedback</div>
-                </motion.div>
-              </>
-            )}
-          </div>
-        </div>
-      </section>
-
-      {/* FEATURED PROJECTS */}
-      <section className="py-20 px-6 lg:px-8 w-full min-w-0">
+      <section className="py-16 px-6 lg:px-8 w-full min-w-0">
         <div className="max-w-7xl mx-auto w-full min-w-0">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12 w-full min-w-0"
+            className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10 w-full min-w-0"
           >
             <div className="w-full min-w-0">
               <p className="text-[10px] font-semibold uppercase tracking-[0.14em] bg-gradient-to-r from-[#F59E0B] to-[#EC4899] bg-clip-text text-transparent mb-2 break-words">Selected Work</p>
@@ -317,9 +247,8 @@ export default function HomeSection() {
         </div>
       </section>
 
-      {/* BOTTOM CTA */}
       <section
-        className="py-20 px-6 lg:px-8 relative overflow-hidden w-full min-w-0"
+        className="py-16 px-6 lg:px-8 relative overflow-hidden w-full min-w-0"
         style={{ background: 'linear-gradient(135deg, #141414 0%, #1E1B4B 50%, #0C2340 100%)' }}
       >
         <div className="absolute top-0 right-0 w-80 h-80 rounded-full opacity-20 blur-3xl" style={{ background: 'radial-gradient(circle, #EC4899, transparent)' }} />

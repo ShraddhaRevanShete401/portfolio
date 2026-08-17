@@ -89,7 +89,7 @@ export default function JourneySection() {
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-16"
+          className="mb-8"
         >
           <p className="text-[10px] font-semibold uppercase tracking-[0.14em] bg-gradient-to-r from-[#2563EB] to-[#7C3AED] bg-clip-text text-transparent mb-3">
             Journey
@@ -158,14 +158,13 @@ export default function JourneySection() {
           ))}
         </div>
 
-        {/* Continuous Learning */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
           <div
-            className="border border-[#E5E4E2] dark:border-[#1E1E1E] rounded-2xl p-8 relative overflow-hidden"
+            className="border border-[#E5E4E2] dark:border-[#1E1E1E] rounded-2xl p-6 relative overflow-hidden"
             style={{ background: 'linear-gradient(135deg, rgba(37,99,235,0.05) 0%, rgba(6,182,212,0.05) 100%)' }}
           >
             <div className="absolute top-0 right-0 w-48 h-48 rounded-full opacity-20 blur-3xl" style={{ background: 'radial-gradient(circle, #06B6D4, transparent)' }} />

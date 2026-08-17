@@ -8,21 +8,21 @@ const education = [
 ]
 
 const approach = [
-  { num: '01', title: 'UNDERSTAND', body: 'Define the real problem before jumping to solutions.', color: '#2563EB' },
-  { num: '02', title: 'ANALYZE', body: 'Explore data and identify patterns that matter.', color: '#7C3AED' },
-  { num: '03', title: 'STRATEGIZE', body: 'Evaluate options and formulate recommendations.', color: '#06B6D4' },
-  { num: '04', title: 'IMPACT', body: 'Translate insights into decisions with measurable outcomes.', color: '#059669' },
+  { num: '01', title: 'UNDERSTAND', body: 'Define the real problem before jumping to solutions.', color: '#F59E0B' },
+  { num: '02', title: 'ANALYZE', body: 'Explore data and identify patterns that matter.', color: '#EC4899' },
+  { num: '03', title: 'STRATEGIZE', body: 'Evaluate options and formulate recommendations.', color: '#7C3AED' },
+  { num: '04', title: 'IMPACT', body: 'Translate insights into decisions with measurable outcomes.', color: '#06B6D4' },
 ]
 
 const differentiators = [
   {
     title: 'Mathematical Thinking',
     body: 'A rigorous foundation in mathematics, analytical reasoning and optimization that shapes how I approach every problem.',
-    gradient: 'from-[#2563EB] to-[#7C3AED]',
-    iconBg: 'rgba(37,99,235,0.12)',
+    gradient: 'from-[#F59E0B] to-[#EC4899]',
+    iconBg: 'rgba(245,158,11,0.12)',
     icon: (
       <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="url(#g1)" strokeWidth="1.5">
-        <defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop stopColor="#2563EB"/><stop offset="1" stopColor="#7C3AED"/></linearGradient></defs>
+        <defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop stopColor="#F59E0B"/><stop offset="1" stopColor="#EC4899"/></linearGradient></defs>
         <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
       </svg>
     ),
@@ -65,16 +65,15 @@ export default function AboutSection() {
   return (
     <section
       id="about"
-      className="py-24 px-6 lg:px-8"
+      className="py-16 px-6 lg:px-8"
       style={{ background: 'radial-gradient(ellipse 80% 60% at 0% 50%, rgba(37,99,235,0.04) 0%, transparent 60%)' }}
     >
       <div className="max-w-7xl mx-auto">
-        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-16 max-w-2xl w-full min-w-0"
+          className="mb-10 max-w-2xl w-full min-w-0"
         >
           <p className="text-[11px] font-semibold uppercase tracking-[0.16em] bg-gradient-to-r from-[#F59E0B] to-[#EC4899] bg-clip-text text-transparent mb-3 break-words">
             About Me
@@ -88,8 +87,7 @@ export default function AboutSection() {
           </h2>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 mb-20 w-full min-w-0">
-          {/* Intro */}
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 mb-12 w-full min-w-0">
           <motion.div
             initial={{ opacity: 0, x: -24 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -113,7 +111,6 @@ export default function AboutSection() {
             </div>
           </motion.div>
 
-          {/* Education Timeline */}
           <motion.div
             initial={{ opacity: 0, x: 24 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -159,13 +156,12 @@ export default function AboutSection() {
           </motion.div>
         </div>
 
-        {/* Approach */}
         <motion.div
           initial={{ opacity: 0, y: 32 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="mb-20 rounded-3xl p-8 sm:p-10 md:p-14 border border-[#E5E4E2] dark:border-[#1E1E1E] overflow-hidden relative w-full min-w-0"
+          className="mb-12 rounded-3xl p-6 sm:p-7 md:p-10 border border-[#E5E4E2] dark:border-[#1E1E1E] overflow-hidden relative w-full min-w-0"
           style={{ background: 'linear-gradient(135deg, rgba(245,158,11,0.05) 0%, rgba(236,72,153,0.05) 50%, rgba(124,58,237,0.05) 100%)' }}
         >
           <div className="absolute top-0 right-0 w-80 h-80 rounded-full opacity-30 blur-3xl" style={{ background: 'radial-gradient(circle, #EC4899, transparent)' }} />
@@ -173,7 +169,6 @@ export default function AboutSection() {
 
           <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#A3A3A3] mb-10 relative z-10 break-words">My Approach</p>
 
-          {/* Connecting Timeline Line (desktop horizontal, mobile vertical) */}
           <div className="hidden lg:block absolute left-14 right-14 top-24 h-[2px] z-0">
             <motion.div
               initial={{ scaleX: 0, originX: 0 }}
@@ -195,7 +190,7 @@ export default function AboutSection() {
             />
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6 relative z-10 w-full min-w-0">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-4 relative z-10 w-full min-w-0">
             {approach.map((step, i) => (
               <motion.div
                 key={step.num}
@@ -260,13 +255,12 @@ export default function AboutSection() {
           </div>
         </motion.div>
 
-        {/* Differentiators */}
         <motion.div
           initial={{ opacity: 0, y: 32 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="mb-20 w-full min-w-0"
+          className="mb-12 w-full min-w-0"
         >
           <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#A3A3A3] mb-10 break-words">What Differentiates Me</p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-7 w-full min-w-0">
@@ -329,13 +323,12 @@ export default function AboutSection() {
           </div>
         </motion.div>
 
-        {/* Personal dimension - Beyond Analytics */}
         <motion.div
           initial={{ opacity: 0, y: 32 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="pt-14 border-t border-[#E5E4E2] dark:border-[#1E1E1E] w-full min-w-0"
+          className="pt-10 border-t border-[#E5E4E2] dark:border-[#1E1E1E] w-full min-w-0"
         >
           <div className="flex items-end justify-between mb-10 flex-wrap gap-4 w-full min-w-0">
             <div className="w-full min-w-0">
@@ -349,7 +342,7 @@ export default function AboutSection() {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-5 w-full min-w-0">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-4 w-full min-w-0">
             {personal.map((item, i) => (
               <motion.div
                 key={item.label}

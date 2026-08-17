@@ -10,12 +10,7 @@ const navLinks = [
   { label: 'Contact', href: '#contact' },
 ]
 
-interface NavProps {
-  darkMode: boolean
-  setDarkMode: (v: boolean) => void
-}
-
-export default function Nav({ darkMode, setDarkMode }: NavProps) {
+export default function Nav({ darkMode, setDarkMode }) {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const [active, setActive] = useState('home')
@@ -47,7 +42,6 @@ export default function Nav({ darkMode, setDarkMode }: NavProps) {
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            {/* Logo */}
             <a
               href="#home"
               className="text-sm md:text-base font-bold tracking-tight hover:opacity-90 transition-opacity min-w-0 shrink-0"
@@ -55,7 +49,6 @@ export default function Nav({ darkMode, setDarkMode }: NavProps) {
               <span className="text-gradient-sunset leading-none">SHRADDHA REVAN SHETE</span>
             </a>
 
-            {/* Desktop links */}
             <div className="hidden md:flex items-center gap-1">
               {navLinks.map((link) => (
                 <a
@@ -77,9 +70,7 @@ export default function Nav({ darkMode, setDarkMode }: NavProps) {
               ))}
             </div>
 
-            {/* Right side */}
             <div className="hidden md:flex items-center gap-3">
-              {/* Dark mode toggle */}
               <button
                 onClick={() => setDarkMode(!darkMode)}
                 className="w-8 h-8 flex items-center justify-center rounded-full text-[#525252] dark:text-[#A3A3A3] hover:text-[#141414] dark:hover:text-white hover:bg-[#F1F0EE] dark:hover:bg-[#1A1A1A] transition-all"
@@ -109,7 +100,6 @@ export default function Nav({ darkMode, setDarkMode }: NavProps) {
               </a>
             </div>
 
-            {/* Mobile menu button */}
             <div className="flex md:hidden items-center gap-2">
               <button
                 onClick={() => setDarkMode(!darkMode)}
@@ -131,7 +121,6 @@ export default function Nav({ darkMode, setDarkMode }: NavProps) {
         </div>
       </nav>
 
-      {/* Mobile menu */}
       {mobileOpen && (
         <div className="fixed inset-0 z-40 md:hidden" onClick={() => setMobileOpen(false)}>
           <div className="absolute inset-0 bg-black/20 dark:bg-black/50" />

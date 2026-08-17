@@ -64,7 +64,6 @@ const certifications = [
   { name: 'GCC-TBC 40 English', year: '2026', detail: '94.5%' },
 ]
 
-// Tech stack section
 const techStack = [
   { name: 'React', role: 'Frontend · Portfolio UI', color: '#06B6D4' },
   { name: 'Flask', role: 'Backend · API Layer', color: '#059669' },
@@ -101,12 +100,11 @@ export default function SkillsSection() {
           </p>
         </motion.div>
 
-        {/* Tech Stack highlight */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-10 mb-8 p-6 rounded-2xl border border-[#E5E4E2] dark:border-[#1E1E1E] bg-white dark:bg-[#111111] relative overflow-hidden"
+          className="mt-6 mb-6 p-6 rounded-2xl border border-[#E5E4E2] dark:border-[#1E1E1E] bg-white dark:bg-[#111111] relative overflow-hidden"
         >
           <div className="absolute inset-0 opacity-30" style={{ background: 'linear-gradient(135deg, rgba(37,99,235,0.06) 0%, rgba(124,58,237,0.06) 50%, rgba(6,182,212,0.06) 100%)' }} />
           <div className="relative z-10 flex flex-col md:flex-row md:items-center gap-4 md:gap-8">
@@ -128,7 +126,6 @@ export default function SkillsSection() {
           </div>
         </motion.div>
 
-        {/* Skill groups */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-16">
           {skillGroups.map((group, i) => (
             <motion.div
@@ -138,7 +135,7 @@ export default function SkillsSection() {
               viewport={{ once: true }}
               transition={{ delay: i * 0.08 }}
               whileHover={{ y: -3 }}
-              className="bg-white dark:bg-[#111111] border border-[#E5E4E2] dark:border-[#1E1E1E] rounded-2xl p-7 group relative overflow-hidden transition-shadow hover:shadow-lg"
+              className="bg-white dark:bg-[#111111] border border-[#E5E4E2] dark:border-[#1E1E1E] rounded-2xl p-5 group relative overflow-hidden transition-shadow hover:shadow-lg"
             >
               <div className={`absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r ${group.gradient}`} />
               <div className="flex items-center gap-3 mb-5">
@@ -166,7 +163,6 @@ export default function SkillsSection() {
           ))}
         </div>
 
-        {/* Certifications */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

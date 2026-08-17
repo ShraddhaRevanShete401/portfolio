@@ -9,7 +9,7 @@ import ContactSection from './components/sections/ContactSection'
 import Footer from './components/Footer'
 
 export default function App() {
-  const [darkMode, setDarkMode] = useState(false)
+  const [darkMode, setDarkMode] = useState(true)
 
   useEffect(() => {
     if (darkMode) {

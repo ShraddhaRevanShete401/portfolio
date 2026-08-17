@@ -6,7 +6,7 @@ export default function ContactSection() {
   const [form, setForm] = useState({ name: '', email: '', message: '' })
   const [sent, setSent] = useState(false)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e) => {
     e.preventDefault()
     setSent(true)
     setTimeout(() => setSent(false), 3000)
@@ -16,16 +16,14 @@ export default function ContactSection() {
   return (
     <section
       id="contact"
-      className="py-24 px-6 lg:px-8 relative overflow-hidden"
+      className="py-16 px-6 lg:px-8 relative overflow-hidden"
       style={{ background: 'linear-gradient(135deg, rgba(37,99,235,0.04) 0%, rgba(124,58,237,0.05) 50%, rgba(6,182,212,0.04) 100%)' }}
     >
-      {/* bg orbs */}
       <div className="absolute top-0 left-0 w-96 h-96 rounded-full opacity-10 blur-3xl pointer-events-none" style={{ background: 'radial-gradient(circle, #2563EB, transparent)' }} />
       <div className="absolute bottom-0 right-0 w-96 h-96 rounded-full opacity-10 blur-3xl pointer-events-none" style={{ background: 'radial-gradient(circle, #7C3AED, transparent)' }} />
 
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24">
-          {/* Left */}
           <motion.div
             initial={{ opacity: 0, x: -24 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -42,11 +40,11 @@ export default function ContactSection() {
               </span>{' '}
               with data.
             </h2>
-            <p className="text-base text-[#525252] dark:text-[#A3A3A3] leading-relaxed mb-10 max-w-md">
+            <p className="text-base text-[#525252] dark:text-[#A3A3A3] leading-relaxed mb-6 max-w-md">
               I'm interested in opportunities across Business Analytics, Data Analytics, Product Analytics, Business Intelligence, Consulting, Strategy and related roles.
             </p>
 
-            <div className="flex flex-col gap-4 mb-10">
+            <div className="flex flex-col gap-3 mb-6">
               {[
                 {
                   href: 'https://linkedin.com/in/shraddhashete',
@@ -119,17 +117,16 @@ export default function ContactSection() {
             </motion.a>
           </motion.div>
 
-          {/* Right: form */}
           <motion.div
             initial={{ opacity: 0, x: 24 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
           >
-            <div className="bg-white dark:bg-[#111111] border border-[#E5E4E2] dark:border-[#1E1E1E] rounded-2xl p-8 relative overflow-hidden shadow-xl shadow-black/5">
+            <div className="bg-white dark:bg-[#111111] border border-[#E5E4E2] dark:border-[#1E1E1E] rounded-2xl p-6 relative overflow-hidden shadow-xl shadow-black/5">
               <div className="absolute top-0 left-0 right-0 h-0.5" style={{ background: 'linear-gradient(90deg, #2563EB, #7C3AED, #06B6D4)' }} />
               <h3 className="text-base font-semibold text-[#141414] dark:text-white mb-6">Send a message</h3>
-              <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+              <form onSubmit={handleSubmit} className="flex flex-col gap-4">
                 {[
                   { key: 'name', label: 'Name', type: 'text', placeholder: 'Your name' },
                   { key: 'email', label: 'Email', type: 'email', placeholder: 'your@email.com' },
@@ -138,7 +135,7 @@ export default function ContactSection() {
                     <label className="block text-xs font-semibold uppercase tracking-widest text-[#A3A3A3] mb-2">{field.label}</label>
                     <input
                       type={field.type}
-                      value={form[field.key as keyof typeof form]}
+                      value={form[field.key]}
                       onChange={(e) => setForm({ ...form, [field.key]: e.target.value })}
                       placeholder={field.placeholder}
                       required

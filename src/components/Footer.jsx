@@ -2,7 +2,7 @@ import resumeImage from '../../Resume.jpeg'
 
 export default function Footer() {
   return (
-    <footer className="border-t border-[#E5E4E2] dark:border-[#1E1E1E] bg-white dark:bg-[#0D0D0D] py-10 px-6 lg:px-8 relative overflow-hidden">
+    <footer className="border-t border-[#E5E4E2] dark:border-[#1E1E1E] bg-white dark:bg-[#0D0D0D] py-7 px-6 lg:px-8 relative overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <div className="absolute inset-0 opacity-30 pointer-events-none" style={{ background: 'linear-gradient(90deg, rgba(37,99,235,0.04) 0%, rgba(124,58,237,0.04) 50%, rgba(6,182,212,0.04) 100%)' }} />
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 relative z-10">

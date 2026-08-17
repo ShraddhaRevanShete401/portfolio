@@ -1,9 +1,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
-type FilterType = 'all' | 'business-analytics' | 'business-intelligence' | 'data-analytics' | 'strategy'
-
-const filters: { label: string; value: FilterType }[] = [
+const filters = [
   { label: 'All', value: 'all' },
   { label: 'Business Analytics', value: 'business-analytics' },
   { label: 'Business Intelligence', value: 'business-intelligence' },
@@ -151,7 +149,7 @@ function DecisionTreeVisual() {
 const projects = [
   {
     id: 'marketing',
-    filter: ['all', 'business-analytics', 'data-analytics'] as FilterType[],
+    filter: ['all', 'business-analytics', 'data-analytics'],
     category: 'Marketing Analytics · EDA',
     tag: 'Business Analytics',
     title: 'Marketing Campaign Profitability Analysis',
@@ -178,7 +176,7 @@ const projects = [
   },
   {
     id: 'automobile',
-    filter: ['all', 'business-intelligence'] as FilterType[],
+    filter: ['all', 'business-intelligence'],
     category: 'Business Intelligence · Power BI · DAX',
     tag: 'Business Intelligence',
     title: 'Automobile Sales Analytics Dashboard',
@@ -205,7 +203,7 @@ const projects = [
   },
   {
     id: 'gametheory',
-    filter: ['all', 'strategy'] as FilterType[],
+    filter: ['all', 'strategy'],
     category: 'Strategy · Game Theory · Optimization',
     tag: 'Strategy',
     title: 'Game Theory Research for Strategic Decision-Making',
@@ -231,7 +229,7 @@ const projects = [
   },
 ]
 
-function CaseStudyModal({ project, onClose }: { project: typeof projects[0]; onClose: () => void }) {
+function CaseStudyModal({ project, onClose }) {
   const cs = project.caseStudy
   return (
     <motion.div
@@ -309,8 +307,8 @@ function CaseStudyModal({ project, onClose }: { project: typeof projects[0]; onC
 }
 
 export default function ProjectsSection() {
-  const [filter, setFilter] = useState<FilterType>('all')
-  const [caseStudy, setCaseStudy] = useState<typeof projects[0] | null>(null)
+  const [filter, setFilter] = useState('all')
+  const [caseStudy, setCaseStudy] = useState(null)
 
   const visible = projects.filter(p => p.filter.includes(filter))
 
@@ -342,7 +340,6 @@ export default function ProjectsSection() {
           </p>
         </motion.div>
 
-        {/* Filters */}
         <div className="flex flex-wrap gap-2 mb-12">
           {filters.map((f) => (
             <motion.button
@@ -362,8 +359,7 @@ export default function ProjectsSection() {
           ))}
         </div>
 
-        {/* Projects */}
-        <div className="flex flex-col gap-8">
+        <div className="flex flex-col gap-5">
           <AnimatePresence mode="wait">
             {visible.map((project, idx) => (
               <motion.div
