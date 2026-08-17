@@ -1,3 +1,5 @@
+import resumeImage from '../../Resume.jpeg'
+
 export default function Footer() {
   return (
     <footer className="border-t border-[#E5E4E2] dark:border-[#1E1E1E] bg-white dark:bg-[#0D0D0D] py-10 px-6 lg:px-8 relative overflow-hidden">
@@ -17,7 +19,12 @@ export default function Footer() {
             >
               LinkedIn ↗
             </a>
-            <a href="#" className="text-xs text-[#737373] hover:text-[#2563EB] dark:hover:text-[#3B82F6] transition-colors">
+            <a
+              href={resumeImage}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs text-[#737373] hover:text-[#2563EB] dark:hover:text-[#3B82F6] transition-colors"
+            >
               Resume ↗
             </a>
             <a

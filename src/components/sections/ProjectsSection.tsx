@@ -7,7 +7,6 @@ const filters: { label: string; value: FilterType }[] = [
   { label: 'All', value: 'all' },
   { label: 'Business Analytics', value: 'business-analytics' },
   { label: 'Business Intelligence', value: 'business-intelligence' },
-  { label: 'Data Analytics', value: 'data-analytics' },
   { label: 'Strategy', value: 'strategy' },
 ]
 
@@ -165,6 +164,7 @@ const projects = [
     ],
     insight: 'Identified loss-making and high-cost campaigns across three cost tiers.',
     recommendation: 'Recommended budget reallocation to highest-margin campaign segments.',
+    projectUrl: 'https://drive.google.com/drive/folders/1_anBKOM2ZOUrV3K-w6LZcOIj1MA3gMAV?usp=sharing',
     Visual: CampaignVisual,
     gradient: 'from-[#2563EB] to-[#7C3AED]',
     caseStudy: {
@@ -191,6 +191,7 @@ const projects = [
     ],
     insight: 'Single dashboard surface for YTD, MTD, YOY and PTYD comparisons across 15+ sales attributes.',
     recommendation: 'Deployed 6+ interactive visualizations enabling sales leaders to identify underperforming segments.',
+    projectUrl: 'https://app.powerbi.com/groups/me/reports/1daed662-1716-4d60-944e-5fac865894b3/ReportSection992d4a0cd95a6694c75e?experience=power-bi',
     Visual: DashboardVisual,
     gradient: 'from-[#059669] to-[#06B6D4]',
     caseStudy: {
@@ -329,14 +330,14 @@ export default function ProjectsSection() {
           <p className="text-[10px] font-semibold uppercase tracking-[0.14em] bg-gradient-to-r from-[#2563EB] to-[#7C3AED] bg-clip-text text-transparent mb-3">
             Selected Projects
           </p>
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-[#141414] dark:text-white mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-[#141414] dark:text-white mb-4 leading-[1.05]">
             Where data, mathematics and{' '}
             <span className="bg-gradient-to-r from-[#7C3AED] to-[#06B6D4] bg-clip-text text-transparent">
               business thinking
             </span>{' '}
             come together.
           </h2>
-          <p className="text-base text-[#737373] dark:text-[#737373] max-w-xl">
+          <p className="text-lg text-[#737373] dark:text-[#737373] max-w-2xl leading-relaxed">
             Projects built on genuine analysis — no fabricated companies, no invented metrics.
           </p>
         </motion.div>
@@ -347,9 +348,9 @@ export default function ProjectsSection() {
             <motion.button
               key={f.value}
               onClick={() => setFilter(f.value)}
-              whileHover={{ scale: 1.03 }}
+              whileHover={{ scale: 1.04, y: -2 }}
               whileTap={{ scale: 0.97 }}
-              className={`px-4 py-2 text-xs font-semibold rounded-full transition-all duration-200 ${
+              className={`px-5 py-2.5 text-sm font-semibold rounded-full transition-all duration-200 ${
                 filter === f.value
                   ? 'text-white shadow-md'
                   : 'bg-white dark:bg-[#111111] border border-[#E5E4E2] dark:border-[#1E1E1E] text-[#525252] dark:text-[#A3A3A3] hover:border-[#A3A3A3]'
@@ -370,53 +371,90 @@ export default function ProjectsSection() {
                 initial={{ opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -16 }}
-                transition={{ delay: idx * 0.08 }}
-                className="bg-white dark:bg-[#111111] border border-[#E5E4E2] dark:border-[#1E1E1E] rounded-2xl overflow-hidden hover:shadow-xl dark:hover:shadow-2xl transition-shadow duration-300 relative"
+                whileHover={{ y: -6, scale: 1.005 }}
+                transition={{ delay: idx * 0.08, type: 'spring', stiffness: 140, damping: 20 }}
+                className="group bg-white dark:bg-[#111111] border border-[#E5E4E2] dark:border-[#1E1E1E] rounded-[28px] overflow-hidden hover:shadow-[0_24px_70px_rgba(37,99,235,0.10)] dark:hover:shadow-[0_28px_80px_rgba(0,0,0,0.55)] transition-shadow duration-300 relative"
               >
                 <div className={`absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r ${project.gradient}`} />
-                <div className={`grid ${idx % 2 === 0 ? 'lg:grid-cols-[1fr_360px]' : 'lg:grid-cols-[360px_1fr]'} gap-0`}>
-                  <div className={`p-8 md:p-10 flex flex-col gap-6 ${idx % 2 !== 0 ? 'lg:order-2' : ''}`}>
+                <motion.div
+                  aria-hidden="true"
+                  className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-br ${project.gradient}`}
+                  style={{ mixBlendMode: 'soft-light' }}
+                />
+                <div className={`grid ${idx % 2 === 0 ? 'lg:grid-cols-[1.08fr_390px]' : 'lg:grid-cols-[390px_1.08fr]'} gap-0`}>
+                  <div className={`relative p-9 md:p-12 flex flex-col gap-7 ${idx % 2 !== 0 ? 'lg:order-2' : ''}`}>
                     <div>
                       <div className="flex items-center gap-3 mb-4">
                         <div className={`w-2 h-2 rounded-full bg-gradient-to-br ${project.gradient}`} />
                         <span className="text-[10px] font-semibold uppercase tracking-widest text-[#A3A3A3]">{project.category}</span>
                       </div>
-                      <h3 className="text-xl md:text-2xl font-bold text-[#141414] dark:text-white mb-3 leading-snug">{project.title}</h3>
-                      <p className={`text-sm font-semibold italic mb-1 bg-gradient-to-r ${project.gradient} bg-clip-text text-transparent`}>
+                      <h3 className="text-2xl md:text-[2rem] font-bold text-[#141414] dark:text-white mb-4 leading-[1.15]">{project.title}</h3>
+                      <p className={`text-base md:text-lg font-semibold italic mb-2 bg-gradient-to-r ${project.gradient} bg-clip-text text-transparent`}>
                         "{project.headline}"
                       </p>
-                      <p className="text-sm text-[#525252] dark:text-[#A3A3A3] leading-relaxed mt-3">{project.description}</p>
+                      <p className="text-base md:text-lg text-[#525252] dark:text-[#A3A3A3] leading-relaxed mt-4 max-w-3xl">{project.description}</p>
                     </div>
-                    <div className="flex flex-wrap gap-6">
+                    <div className="flex flex-wrap gap-8">
                       {project.metrics.map((m) => (
-                        <div key={m.label}>
-                          <p className={`text-lg font-bold bg-gradient-to-r ${project.gradient} bg-clip-text text-transparent`}>{m.value}</p>
-                          <p className="text-[11px] text-[#A3A3A3]">{m.label}</p>
-                        </div>
+                        <motion.div
+                          key={m.label}
+                          whileHover={{ y: -2 }}
+                          className="min-w-[110px]"
+                        >
+                          <p className={`text-2xl md:text-[1.75rem] font-bold bg-gradient-to-r ${project.gradient} bg-clip-text text-transparent`}>{m.value}</p>
+                          <p className="text-sm text-[#A3A3A3]">{m.label}</p>
+                        </motion.div>
                       ))}
                     </div>
-                    <div className="pt-4 border-t border-[#F1F0EE] dark:border-[#1A1A1A] space-y-2">
-                      <p className="text-xs text-[#525252] dark:text-[#A3A3A3]">
-                        <span className="font-semibold text-[#141414] dark:text-white">Insight: </span>{project.insight}
-                      </p>
-                      <p className="text-xs text-[#525252] dark:text-[#A3A3A3]">
-                        <span className="font-semibold text-[#141414] dark:text-white">Recommendation: </span>{project.recommendation}
-                      </p>
+                    <div className="pt-5 border-t border-[#F1F0EE] dark:border-[#1A1A1A] space-y-3">
+                      <div>
+                        <p className="text-xs text-[#525252] dark:text-[#A3A3A3]">
+                          <span className="font-semibold text-[#141414] dark:text-white">Insight: </span>{project.insight}
+                        </p>
+                      </div>
+                      <div>
+                        <p className="text-xs text-[#525252] dark:text-[#A3A3A3]">
+                          <span className="font-semibold text-[#141414] dark:text-white">Recommendation: </span>{project.recommendation}
+                        </p>
+                      </div>
                     </div>
-                    <motion.button
-                      onClick={() => setCaseStudy(project)}
-                      whileHover={{ x: 4 }}
-                      className={`group flex items-center gap-2 text-sm font-semibold w-fit bg-gradient-to-r ${project.gradient} bg-clip-text text-transparent`}
-                    >
-                      View Case Study
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#7C3AED" strokeWidth="2.5">
-                        <path d="M5 12h14M12 5l7 7-7 7"/>
-                      </svg>
-                    </motion.button>
+                    <div className="flex flex-wrap items-center gap-4 pt-1">
+                      <motion.button
+                        whileHover={{ x: 4, scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                        className={`group flex items-center gap-2 text-base md:text-lg font-semibold w-fit bg-gradient-to-r ${project.gradient} bg-clip-text text-transparent`}
+                        onClick={() => setCaseStudy(project)}
+                      >
+                        View Case Study
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#7C3AED" strokeWidth="2.5">
+                          <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                      </motion.button>
+                      {project.projectUrl && (
+                        <motion.a
+                          href={project.projectUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          whileHover={{ y: -2, scale: 1.02 }}
+                          whileTap={{ scale: 0.98 }}
+                          className="inline-flex items-center gap-2 rounded-full border border-[#D4D3D1] dark:border-[#2A2A2A] px-6 py-3 text-sm md:text-base font-semibold text-[#141414] dark:text-white hover:border-[#2563EB] hover:text-[#2563EB] dark:hover:border-[#7C3AED] dark:hover:text-[#A78BFA] transition-all"
+                        >
+                          View Project
+                          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="-translate-y-px">
+                            <path d="M7 17L17 7M17 7H7M17 7v10"/>
+                          </svg>
+                        </motion.a>
+                      )}
+                    </div>
                   </div>
-                  <div className={`p-6 bg-[#F9F8F6] dark:bg-[#0D0D0D] flex items-center ${idx % 2 !== 0 ? 'lg:order-1' : ''}`}>
-                    <project.Visual />
-                  </div>
+                  <motion.div
+                    whileHover={{ scale: 1.015 }}
+                    className={`p-7 md:p-8 bg-[#F9F8F6] dark:bg-[#0D0D0D] flex items-center ${idx % 2 !== 0 ? 'lg:order-1' : ''}`}
+                  >
+                    <div className="w-full scale-[1.02]">
+                      <project.Visual />
+                    </div>
+                  </motion.div>
                 </div>
               </motion.div>
             ))}

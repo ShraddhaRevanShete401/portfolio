@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
+import resumeImage from '../../../Resume.jpeg'
 
 export default function ContactSection() {
   const [form, setForm] = useState({ name: '', email: '', message: '' })
@@ -103,13 +104,15 @@ export default function ContactSection() {
             </div>
 
             <motion.a
-              href="#"
+              href={resumeImage}
+              target="_blank"
+              rel="noopener noreferrer"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.97 }}
               className="flex items-center gap-2 px-6 py-3 text-sm font-semibold rounded-full text-white w-fit shadow-lg shadow-blue-500/20"
               style={{ background: 'linear-gradient(135deg, #2563EB, #7C3AED)' }}
             >
-              Download Resume
+              View Resume
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="-translate-y-px">
                 <path d="M7 17L17 7M17 7H7M17 7v10"/>
               </svg>

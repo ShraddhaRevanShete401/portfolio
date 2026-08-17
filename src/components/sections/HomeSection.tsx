@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
 import officialPhoto from '@/imports/Official_Photo.jpeg'
+import resumeImage from '../../../Resume.jpeg'
 
 function useCountUp(target: number, duration = 1800, active = false) {
   const [count, setCount] = useState(0)
@@ -33,53 +34,57 @@ function FadeUp({ children, delay = 0, className = '' }: { children: React.React
 function MetricItem({ value, suffix = '', label, active }: { value: number; suffix?: string; label: string; active: boolean }) {
   const count = useCountUp(value, 1800, active)
   return (
-    <div className="text-center">
-      <div className="text-4xl md:text-5xl font-bold tracking-tight tabular-nums bg-gradient-to-br from-[#2563EB] via-[#7C3AED] to-[#06B6D4] bg-clip-text text-transparent">
-        {count.toLocaleString()}{suffix}
+    <div className="text-center min-w-0">
+      <div className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight tabular-nums break-all">
+        <span className="bg-gradient-to-br from-[#F59E0B] via-[#EC4899] to-[#A855F7] bg-clip-text text-transparent">
+          {count.toLocaleString()}{suffix}
+        </span>
       </div>
-      <div className="mt-2 text-sm text-[#737373] dark:text-[#A3A3A3] font-medium">{label}</div>
+      <div className="mt-2 text-sm text-[#737373] dark:text-[#A3A3A3] font-medium break-words">{label}</div>
     </div>
   )
 }
 
 function PhotoCard() {
   return (
-    <div className="relative w-full max-w-[380px] mx-auto">
-      <div className="absolute -inset-1 rounded-3xl bg-gradient-to-br from-[#2563EB] via-[#7C3AED] to-[#06B6D4] opacity-60 blur-lg" />
-      <div className="absolute -inset-[3px] rounded-3xl bg-gradient-to-br from-[#2563EB] via-[#7C3AED] to-[#06B6D4]" />
-      <div className="relative rounded-3xl overflow-hidden bg-[#E8E8E8]">
-        <img
-          src={officialPhoto}
-          alt="Shraddha Revan Shete — PGDM Big Data Analytics, Goa Institute of Management"
-          className="w-full object-cover object-top"
-          style={{ aspectRatio: '4/5' }}
-        />
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#0D0D0D]/80 to-transparent" />
-        <div className="absolute bottom-4 left-4 right-4">
-          <p className="text-white text-sm font-semibold">Shraddha Revan Shete</p>
-          <p className="text-white/70 text-xs mt-0.5">PGDM – Big Data Analytics · GIM</p>
+    <div className="w-full max-w-[420px] mx-auto">
+      <div className="relative mx-auto w-[280px] sm:w-[320px] md:w-[360px]">
+        <div className="absolute -inset-6 rounded-full bg-gradient-to-br from-[#2563EB]/35 via-[#7C3AED]/30 to-[#06B6D4]/35 blur-3xl" />
+        <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#2563EB] via-[#7C3AED] to-[#06B6D4] p-[4px] shadow-[0_0_60px_rgba(59,130,246,0.18)]">
+          <div className="h-full w-full rounded-full bg-[#E8E8E8]" />
+        </div>
+        <div className="relative aspect-square overflow-hidden rounded-full border border-white/10 bg-[#E8E8E8] shadow-2xl">
+          <img
+            src={officialPhoto}
+            alt="Shraddha Revan Shete — PGDM Big Data Analytics, Goa Institute of Management"
+            className="h-full w-full object-cover object-top"
+          />
         </div>
       </div>
-      <motion.div
-        initial={{ opacity: 0, scale: 0.8, y: -8 }}
-        animate={{ opacity: 1, scale: 1, y: 0 }}
-        transition={{ delay: 0.8, duration: 0.5, type: 'spring' }}
-        className="absolute -top-4 -right-4 bg-white dark:bg-[#1A1A1A] border border-[#E5E4E2] dark:border-[#2A2A2A] rounded-2xl px-4 py-3 shadow-xl"
-      >
-        <p className="text-[9px] uppercase tracking-widest text-[#A3A3A3] mb-1">YTD Sales</p>
-        <p className="text-lg font-bold bg-gradient-to-r from-[#2563EB] to-[#7C3AED] bg-clip-text text-transparent">$371.2M</p>
-        <p className="text-[9px] text-emerald-500 font-semibold">↑ Analyzed</p>
-      </motion.div>
-      <motion.div
-        initial={{ opacity: 0, scale: 0.8, y: 8 }}
-        animate={{ opacity: 1, scale: 1, y: 0 }}
-        transition={{ delay: 1.0, duration: 0.5, type: 'spring' }}
-        className="absolute -bottom-4 -left-4 bg-white dark:bg-[#1A1A1A] border border-[#E5E4E2] dark:border-[#2A2A2A] rounded-2xl px-4 py-3 shadow-xl"
-      >
-        <p className="text-[9px] uppercase tracking-widest text-[#A3A3A3] mb-1">Campaigns</p>
-        <p className="text-lg font-bold bg-gradient-to-r from-[#7C3AED] to-[#06B6D4] bg-clip-text text-transparent">1,200+</p>
-        <p className="text-[9px] text-[#A3A3A3]">EDA completed</p>
-      </motion.div>
+      <div className="mt-8 text-center w-full min-w-0">
+        <p className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight leading-tight">
+          <span className="text-gradient-warm">Shraddha Revan Shete</span>
+        </p>
+        <p className="mt-2 text-sm md:text-base text-[#525252] dark:text-[#A3A3A3] break-words">
+          PGDM - Big Data Analytics · GIM
+        </p>
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.5, ease: 'easeOut' }}
+          className="mt-5 flex justify-center w-full px-2"
+        >
+          <div className="inline-flex items-center gap-3 px-3 sm:px-4 md:px-5 py-2.5 md:py-3 rounded-full bg-[#1F2937]/90 dark:bg-[#141414]/95 border border-white/10 dark:border-white/5 shadow-[0_8px_30px_rgba(20,20,20,0.25)] backdrop-blur w-full sm:w-fit max-w-full overflow-hidden">
+            <span className="relative flex h-3 w-3 flex-shrink-0">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-60" style={{ backgroundColor: '#2563EB' }} />
+              <span className="relative inline-flex rounded-full h-3 w-3 flex-shrink-0" style={{ backgroundColor: '#2563EB', boxShadow: '0 0 10px #2563EB, 0 0 20px rgba(37,99,235,0.4)' }} />
+            </span>
+            <span className="text-[10px] sm:text-xs md:text-sm font-semibold tracking-wide text-white break-words text-left">
+              PGDM – BIG DATA ANALYTICS · GOA INSTITUTE OF MANAGEMENT
+            </span>
+          </div>
+        </motion.div>
+      </div>
     </div>
   )
 }
@@ -109,35 +114,40 @@ export default function HomeSection() {
           <div className="grid lg:grid-cols-[1fr_400px] gap-12 lg:gap-16 items-center min-h-[80vh]">
 
             {/* Left — text */}
-            <div className="flex flex-col gap-6 max-w-2xl">
-              <FadeUp delay={0} className="flex items-center gap-3">
-                <div className="h-px w-8 bg-gradient-to-r from-[#2563EB] to-[#7C3AED]" />
-                <span className="text-[11px] font-semibold uppercase tracking-[0.14em] bg-gradient-to-r from-[#2563EB] to-[#7C3AED] bg-clip-text text-transparent">
-                  PGDM – BIG DATA ANALYTICS · GOA INSTITUTE OF MANAGEMENT
-                </span>
+            <div className="flex flex-col gap-6 max-w-2xl w-full min-w-0">
+              <FadeUp delay={0}>
+                <div className="inline-flex items-center gap-3 px-3 sm:px-4 md:px-5 py-2.5 md:py-3 rounded-full bg-[#1F2937]/90 dark:bg-[#141414]/95 border border-white/10 dark:border-white/5 shadow-[0_8px_30px_rgba(20,20,20,0.25)] backdrop-blur w-full sm:w-fit max-w-full overflow-hidden">
+                  <span className="relative flex h-3 w-3 flex-shrink-0">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-60" style={{ backgroundColor: '#10B981' }} />
+                    <span className="relative inline-flex rounded-full h-3 w-3 flex-shrink-0" style={{ backgroundColor: '#10B981', boxShadow: '0 0 10px #10B981, 0 0 20px rgba(16,185,129,0.4)' }} />
+                  </span>
+                  <span className="text-[10px] sm:text-xs md:text-sm font-semibold tracking-wide text-white break-words">
+                    Available for Summer Internship 2027
+                  </span>
+                </div>
               </FadeUp>
 
-              <FadeUp delay={0.1}>
-                <h1 className="text-4xl md:text-5xl lg:text-[3.4rem] font-bold leading-[1.08] tracking-[-0.025em] text-[#141414] dark:text-white">
+              <FadeUp delay={0.08}>
+                <h1 className="text-[2.1rem] sm:text-4xl md:text-5xl lg:text-[3.4rem] font-bold leading-[1.08] tracking-[-0.025em] text-[#141414] dark:text-white">
                   Turning data and{' '}
-                  <span className="bg-gradient-to-r from-[#2563EB] via-[#7C3AED] to-[#06B6D4] bg-clip-text text-transparent">
+                  <span className="text-gradient-sun">
                     mathematical thinking
                   </span>{' '}
                   into better business decisions.
                 </h1>
               </FadeUp>
 
-              <FadeUp delay={0.2}>
-                <p className="text-base md:text-lg text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+              <FadeUp delay={0.22}>
+                <p className="text-sm sm:text-base md:text-lg text-[#525252] dark:text-[#A3A3A3] leading-relaxed break-words">
                   Business analytics professional in training with a foundation in Mathematics, Statistics, Data Analytics, Visualization and Strategic Problem Solving.
                 </p>
               </FadeUp>
 
-              <FadeUp delay={0.3} className="flex items-center gap-2 flex-wrap">
+              <FadeUp delay={0.32} className="flex items-center gap-2 flex-wrap w-full min-w-0">
                 {['React', 'Flask', 'Python', 'Power BI', 'SQL'].map((tech, i) => (
                   <span
                     key={tech}
-                    className="text-[10px] font-semibold px-3 py-1.5 rounded-full border"
+                    className="text-[10px] font-semibold px-3 py-1.5 rounded-full border break-words"
                     style={{
                       background: `linear-gradient(135deg, ${['rgba(37,99,235,0.08)', 'rgba(124,58,237,0.08)', 'rgba(6,182,212,0.08)', 'rgba(5,150,105,0.08)', 'rgba(234,88,12,0.08)'][i]}, transparent)`,
                       borderColor: ['rgba(37,99,235,0.25)', 'rgba(124,58,237,0.25)', 'rgba(6,182,212,0.25)', 'rgba(5,150,105,0.25)', 'rgba(234,88,12,0.25)'][i],
@@ -149,36 +159,38 @@ export default function HomeSection() {
                 ))}
               </FadeUp>
 
-              <FadeUp delay={0.4} className="flex flex-wrap gap-3 pt-1">
+              <FadeUp delay={0.42} className="flex flex-wrap gap-3 pt-1 w-full min-w-0">
                 <a
                   href="#projects"
-                  className="group flex items-center gap-2 px-6 py-3.5 text-sm font-semibold rounded-full text-white shadow-lg shadow-blue-500/20 hover:shadow-blue-500/40 transition-shadow"
-                  style={{ background: 'linear-gradient(135deg, #2563EB, #7C3AED)' }}
+                  className="group flex items-center justify-center gap-2 px-5 sm:px-6 py-3.5 text-sm font-semibold rounded-full text-white shadow-lg shadow-blue-500/20 hover:shadow-blue-500/40 transition-shadow shrink-0"
+                  style={{ background: 'linear-gradient(135deg, #F59E0B 0%, #EC4899 50%, #7C3AED 100%)' }}
                 >
                   Explore My Work
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="transition-transform group-hover:translate-x-0.5">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="transition-transform group-hover:translate-x-0.5 flex-shrink-0">
                     <path d="M5 12h14M12 5l7 7-7 7"/>
                   </svg>
                 </a>
                 <a
-                  href="#"
-                  className="group flex items-center gap-2 px-6 py-3.5 border border-[#E5E4E2] dark:border-[#2A2A2A] text-[#141414] dark:text-white text-sm font-semibold rounded-full hover:border-[#2563EB] hover:text-[#2563EB] dark:hover:border-[#7C3AED] dark:hover:text-[#7C3AED] transition-all duration-200 bg-white dark:bg-transparent"
+                  href={resumeImage}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center justify-center gap-2 px-5 sm:px-6 py-3.5 border border-[#E5E4E2] dark:border-[#2A2A2A] text-[#141414] dark:text-white text-sm font-semibold rounded-full hover:border-[#F59E0B] hover:text-[#EA580C] dark:hover:border-[#EC4899] dark:hover:text-[#F472B6] transition-all duration-200 bg-white dark:bg-transparent shrink-0"
                 >
-                  Download Resume
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="transition-transform group-hover:translate-x-0.5 -translate-y-px">
+                  View Resume
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="transition-transform group-hover:translate-x-0.5 -translate-y-px flex-shrink-0">
                     <path d="M7 17L17 7M17 7H7M17 7v10"/>
                   </svg>
                 </a>
               </FadeUp>
 
-              <FadeUp delay={0.5}>
+              <FadeUp delay={0.52}>
                 <a
                   href="https://linkedin.com/in/shraddhashete"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-center gap-1.5 text-sm text-[#737373] hover:text-[#2563EB] dark:hover:text-[#3B82F6] transition-colors w-fit"
+                  className="group flex items-center gap-1.5 text-sm text-[#737373] hover:text-[#EC4899] dark:hover:text-[#F472B6] transition-colors w-fit break-words"
                 >
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" className="flex-shrink-0">
                     <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z M4 6a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/>
                   </svg>
                   LinkedIn ↗
@@ -199,31 +211,6 @@ export default function HomeSection() {
         </div>
       </section>
 
-      {/* CREDIBILITY STRIP */}
-      <div
-        className="border-y border-[#E5E4E2] dark:border-[#1E1E1E]"
-        style={{ background: 'linear-gradient(90deg, rgba(37,99,235,0.04) 0%, rgba(124,58,237,0.04) 50%, rgba(6,182,212,0.04) 100%)' }}
-      >
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-4">
-          <div className="flex flex-wrap items-center justify-center md:justify-between gap-4 md:gap-8">
-            {[
-              { label: 'MATHEMATICS', color: '#2563EB' },
-              { label: 'ANALYTICS', color: '#7C3AED' },
-              { label: 'BUSINESS INTELLIGENCE', color: '#06B6D4' },
-              { label: 'STRATEGY', color: '#059669' },
-              { label: 'DATA VISUALIZATION', color: '#EA580C' },
-            ].map((item, i) => (
-              <div key={item.label} className="flex items-center gap-4 md:gap-8">
-                {i > 0 && <div className="hidden md:block w-px h-4 bg-[#D4D3D1] dark:bg-[#2A2A2A]" />}
-                <span className="text-[10px] font-bold uppercase tracking-[0.16em]" style={{ color: item.color }}>
-                  {item.label}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
       {/* METRICS */}
       <section
         ref={metricsRef}
@@ -237,16 +224,20 @@ export default function HomeSection() {
                 <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0 }}>
                   <MetricItem value={1200} suffix="+" label="Campaigns analyzed" active={metricsInView} />
                 </motion.div>
-                <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="text-center">
-                  <div className="text-4xl md:text-5xl font-bold tracking-tight bg-gradient-to-br from-[#2563EB] via-[#7C3AED] to-[#06B6D4] bg-clip-text text-transparent">$371.2M</div>
-                  <div className="mt-2 text-sm text-[#737373] dark:text-[#A3A3A3] font-medium">YTD sales analyzed</div>
+                <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="text-center min-w-0">
+                  <div className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight break-all">
+                    <span className="bg-gradient-to-br from-[#EF4444] via-[#D946EF] to-[#6366F1] bg-clip-text text-transparent">$371.2M</span>
+                  </div>
+                  <div className="mt-2 text-sm text-[#737373] dark:text-[#A3A3A3] font-medium break-words">YTD sales analyzed</div>
                 </motion.div>
                 <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
                   <MetricItem value={280} suffix="+" label="Students engaged" active={metricsInView} />
                 </motion.div>
-                <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }} className="text-center">
-                  <div className="text-4xl md:text-5xl font-bold tracking-tight bg-gradient-to-br from-[#059669] to-[#06B6D4] bg-clip-text text-transparent">95%</div>
-                  <div className="mt-2 text-sm text-[#737373] dark:text-[#A3A3A3] font-medium">Positive feedback</div>
+                <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }} className="text-center min-w-0">
+                  <div className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight break-all">
+                    <span className="bg-gradient-to-br from-[#FACC15] via-[#F472B6] to-[#10B981] bg-clip-text text-transparent">95%</span>
+                  </div>
+                  <div className="mt-2 text-sm text-[#737373] dark:text-[#A3A3A3] font-medium break-words">Positive feedback</div>
                 </motion.div>
               </>
             )}
@@ -254,79 +245,43 @@ export default function HomeSection() {
         </div>
       </section>
 
-      {/* POSITIONING */}
-      <section
-        className="py-20 px-6 lg:px-8"
-        style={{ background: 'linear-gradient(135deg, rgba(37,99,235,0.03) 0%, rgba(124,58,237,0.04) 50%, rgba(6,182,212,0.03) 100%)' }}
-      >
-        <div className="max-w-7xl mx-auto">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-[#141414] dark:text-white">
-              Where analytical thinking meets{' '}
-              <span className="bg-gradient-to-r from-[#2563EB] to-[#7C3AED] bg-clip-text text-transparent">
-                business decisions.
-              </span>
-            </h2>
-          </motion.div>
-          <div className="grid md:grid-cols-3 gap-8 md:gap-12">
-            {[
-              { num: '01', title: 'ANALYZE', color: '#2563EB', body: 'Turn raw data into meaningful patterns, trends and KPIs. Identify what matters and filter out the noise.' },
-              { num: '02', title: 'UNDERSTAND', color: '#7C3AED', body: 'Use mathematics, statistics and structured reasoning to understand the underlying problem and its root causes.' },
-              { num: '03', title: 'RECOMMEND', color: '#06B6D4', body: 'Translate analysis into actionable business recommendations that drive better decisions and measurable outcomes.' },
-            ].map((item, i) => (
-              <motion.div
-                key={item.num}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.12 }}
-                className="group"
-              >
-                <p className="text-[10px] font-mono mb-3 tracking-widest" style={{ color: item.color }}>{item.num}</p>
-                <h3 className="text-sm font-bold uppercase tracking-[0.12em] mb-3" style={{ color: item.color }}>{item.title}</h3>
-                <div className="h-px w-8 mb-4 transition-all duration-300 group-hover:w-16" style={{ background: `linear-gradient(90deg, ${item.color}, transparent)` }} />
-                <p className="text-sm text-[#525252] dark:text-[#A3A3A3] leading-relaxed">{item.body}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* FEATURED PROJECTS */}
-      <section className="py-20 px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
+      <section className="py-20 px-6 lg:px-8 w-full min-w-0">
+        <div className="max-w-7xl mx-auto w-full min-w-0">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12"
+            className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12 w-full min-w-0"
           >
-            <div>
-              <p className="text-[10px] font-semibold uppercase tracking-[0.14em] bg-gradient-to-r from-[#2563EB] to-[#7C3AED] bg-clip-text text-transparent mb-2">Selected Work</p>
-              <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-[#141414] dark:text-white">Featured Projects</h2>
+            <div className="w-full min-w-0">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.14em] bg-gradient-to-r from-[#F59E0B] to-[#EC4899] bg-clip-text text-transparent mb-2 break-words">Selected Work</p>
+              <h2 className="text-2xl sm:text-3xl md:text-3xl font-bold tracking-tight text-[#141414] dark:text-white break-words leading-tight">
+                Featured <span className="text-gradient-sunset">Projects</span>
+              </h2>
             </div>
-            <a href="#projects" className="text-sm text-[#525252] dark:text-[#A3A3A3] hover:text-[#2563EB] transition-colors">View all projects →</a>
+            <a href="#projects" className="text-sm text-[#525252] dark:text-[#A3A3A3] hover:text-[#EC4899] transition-colors w-fit shrink-0 break-words">View all projects →</a>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full min-w-0">
             {[
               {
                 title: 'Marketing Campaign Profitability Analysis',
                 problem: 'Identifying where marketing spend creates — and destroys — profit across 1,200 campaigns.',
                 metric: '1,200 campaigns', tag: 'Business Analytics',
-                gradient: 'from-[#2563EB] to-[#7C3AED]', delay: 0,
+                c1: '#F59E0B', c2: '#EC4899', delay: 0,
               },
               {
                 title: 'Automobile Sales Analytics Dashboard',
                 problem: 'Turning complex sales data into decision-ready insights across $371.2M in transactions.',
                 metric: '$371.2M YTD', tag: 'Business Intelligence',
-                gradient: 'from-[#059669] to-[#06B6D4]', delay: 0.1,
+                c1: '#EC4899', c2: '#7C3AED', delay: 0.1,
               },
               {
                 title: 'Game Theory Research for Strategic Decision-Making',
                 problem: 'Using mathematical reasoning to improve strategic decisions through evidence-based frameworks.',
                 metric: '95% feedback', tag: 'Strategy',
-                gradient: 'from-[#7C3AED] to-[#EA580C]', delay: 0.2,
+                c1: '#7C3AED', c2: '#06B6D4', delay: 0.2,
               },
             ].map((project) => (
               <motion.a
@@ -337,18 +292,24 @@ export default function HomeSection() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: project.delay }}
                 whileHover={{ y: -4 }}
-                className="group block bg-white dark:bg-[#111111] border border-[#E5E4E2] dark:border-[#1E1E1E] rounded-2xl p-6 hover:shadow-[0_12px_40px_rgba(0,0,0,0.1)] dark:hover:shadow-[0_12px_40px_rgba(0,0,0,0.5)] transition-shadow duration-300 relative overflow-hidden"
+                className="group block bg-white dark:bg-[#111111] border border-[#E5E4E2] dark:border-[#1E1E1E] rounded-2xl p-6 hover:shadow-[0_12px_40px_rgba(0,0,0,0.1)] dark:hover:shadow-[0_12px_40px_rgba(0,0,0,0.5)] transition-shadow duration-300 relative overflow-hidden w-full min-w-0"
               >
-                <div className={`absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r ${project.gradient} opacity-0 group-hover:opacity-100 transition-opacity`} />
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-[10px] font-semibold uppercase tracking-widest text-[#A3A3A3]">{project.tag}</span>
-                  <div className={`w-2 h-2 rounded-full bg-gradient-to-br ${project.gradient}`} />
+                <div className="absolute top-0 left-0 right-0 h-0.5 opacity-0 group-hover:opacity-100 transition-opacity" style={{ background: `linear-gradient(90deg, ${project.c1}, ${project.c2})` }} />
+                <div className="flex items-center justify-between mb-4 gap-2">
+                  <span className="text-[10px] font-semibold uppercase tracking-widest text-[#A3A3A3] break-words">{project.tag}</span>
+                  <div className="w-2 h-2 rounded-full flex-shrink-0" style={{ background: `linear-gradient(135deg, ${project.c1}, ${project.c2})` }} />
                 </div>
-                <h3 className="text-base font-semibold text-[#141414] dark:text-white leading-snug mb-3">{project.title}</h3>
-                <p className="text-sm text-[#737373] leading-relaxed mb-6">{project.problem}</p>
-                <div className="pt-4 border-t border-[#F1F0EE] dark:border-[#1A1A1A] flex items-end justify-between">
-                  <p className={`text-lg font-bold bg-gradient-to-r ${project.gradient} bg-clip-text text-transparent`}>{project.metric}</p>
-                  <span className={`text-sm font-medium bg-gradient-to-r ${project.gradient} bg-clip-text text-transparent`}>View →</span>
+                <h3 className="text-sm sm:text-base font-semibold text-[#141414] dark:text-white leading-snug mb-3 break-words">{project.title}</h3>
+                <p className="text-sm text-[#737373] leading-relaxed mb-6 break-words">{project.problem}</p>
+                <div className="pt-4 border-t border-[#F1F0EE] dark:border-[#1A1A1A] flex items-end justify-between gap-2 w-full min-w-0">
+                  <p className="text-base sm:text-lg font-bold break-words" style={{
+                    background: `linear-gradient(90deg, ${project.c1}, ${project.c2})`,
+                    WebkitBackgroundClip: 'text', backgroundClip: 'text', color: 'transparent',
+                  }}>{project.metric}</p>
+                  <span className="text-sm font-medium shrink-0 break-words" style={{
+                    background: `linear-gradient(90deg, ${project.c1}, ${project.c2})`,
+                    WebkitBackgroundClip: 'text', backgroundClip: 'text', color: 'transparent',
+                  }}>View →</span>
                 </div>
               </motion.a>
             ))}
@@ -358,33 +319,33 @@ export default function HomeSection() {
 
       {/* BOTTOM CTA */}
       <section
-        className="py-20 px-6 lg:px-8 relative overflow-hidden"
+        className="py-20 px-6 lg:px-8 relative overflow-hidden w-full min-w-0"
         style={{ background: 'linear-gradient(135deg, #141414 0%, #1E1B4B 50%, #0C2340 100%)' }}
       >
-        <div className="absolute top-0 right-0 w-80 h-80 rounded-full opacity-20 blur-3xl" style={{ background: 'radial-gradient(circle, #7C3AED, transparent)' }} />
-        <div className="absolute bottom-0 left-0 w-80 h-80 rounded-full opacity-20 blur-3xl" style={{ background: 'radial-gradient(circle, #2563EB, transparent)' }} />
+        <div className="absolute top-0 right-0 w-80 h-80 rounded-full opacity-20 blur-3xl" style={{ background: 'radial-gradient(circle, #EC4899, transparent)' }} />
+        <div className="absolute bottom-0 left-0 w-80 h-80 rounded-full opacity-20 blur-3xl" style={{ background: 'radial-gradient(circle, #F59E0B, transparent)' }} />
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="relative max-w-4xl mx-auto text-center"
+          className="relative max-w-4xl mx-auto text-center w-full min-w-0 px-2"
         >
-          <h2 className="text-2xl md:text-4xl font-bold tracking-tight text-white mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white mb-4 break-words leading-tight">
             Interested in how I solve{' '}
-            <span className="bg-gradient-to-r from-[#60A5FA] via-[#A78BFA] to-[#67E8F9] bg-clip-text text-transparent">
+            <span className="text-gradient-warm">
               business problems?
             </span>
           </h2>
-          <p className="text-[#A3A3A3] mb-8">From exploratory data analysis to strategic recommendations — let's connect.</p>
+          <p className="text-[#A3A3A3] mb-8 break-words">From exploratory data analysis to strategic recommendations — let's connect.</p>
           <motion.a
             href="#projects"
             whileHover={{ scale: 1.04 }}
             whileTap={{ scale: 0.97 }}
-            className="inline-flex items-center gap-2 px-8 py-4 text-sm font-semibold rounded-full text-white shadow-lg"
-            style={{ background: 'linear-gradient(135deg, #2563EB, #7C3AED)' }}
+            className="inline-flex items-center gap-2 px-7 sm:px-8 py-3.5 sm:py-4 text-sm font-semibold rounded-full text-white shadow-lg shrink-0"
+            style={{ background: 'linear-gradient(135deg, #F59E0B 0%, #EC4899 50%, #7C3AED 100%)' }}
           >
             Explore My Projects
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="flex-shrink-0">
               <path d="M5 12h14M12 5l7 7-7 7"/>
             </svg>
           </motion.a>

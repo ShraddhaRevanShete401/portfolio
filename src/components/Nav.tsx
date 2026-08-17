@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import resumeImage from '../../Resume.jpeg'
 
 const navLinks = [
   { label: 'Home', href: '#home' },
@@ -49,9 +50,9 @@ export default function Nav({ darkMode, setDarkMode }: NavProps) {
             {/* Logo */}
             <a
               href="#home"
-              className="text-sm font-semibold tracking-tight text-[#141414] dark:text-white hover:text-[#2563EB] dark:hover:text-[#3B82F6] transition-colors"
+              className="text-sm md:text-base font-bold tracking-tight hover:opacity-90 transition-opacity min-w-0 shrink-0"
             >
-              SHRADDHA REVAN SHETE
+              <span className="text-gradient-sunset leading-none">SHRADDHA REVAN SHETE</span>
             </a>
 
             {/* Desktop links */}
@@ -95,9 +96,11 @@ export default function Nav({ darkMode, setDarkMode }: NavProps) {
                 )}
               </button>
               <a
-                href="#"
+                href={resumeImage}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center gap-1.5 px-4 py-2 text-sm font-medium text-white rounded-full transition-all shadow-md shadow-blue-500/20"
-              style={{ background: 'linear-gradient(135deg, #2563EB, #7C3AED)' }}
+                style={{ background: 'linear-gradient(135deg, #2563EB, #7C3AED)' }}
               >
                 Resume
                 <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="translate-x-0 -translate-y-px">
@@ -148,10 +151,12 @@ export default function Nav({ darkMode, setDarkMode }: NavProps) {
                 </a>
               ))}
               <a
-                href="#"
+                href={resumeImage}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="mt-3 flex items-center justify-center gap-1.5 px-4 py-3 text-sm font-medium bg-[#141414] dark:bg-white text-white dark:text-[#141414] rounded-full"
               >
-                Download Resume ↗
+                View Resume ↗
               </a>
             </div>
           </div>
